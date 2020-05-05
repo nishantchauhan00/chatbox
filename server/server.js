@@ -3,6 +3,10 @@ const express = require("express");
 const publicPath = path.join(__dirname,"../public");
 const socketIO = require("socket.io");
 const http = require("http");
+const xss = require('xss-clean');
+const helmet = require('helmet');
+const cors = require('cors');
+const compression = require('compression');
 const PORT = process.env.PORT || 3000;
 const app = express();
 const {generate_message,generateLocation_message} = require("./utils/message");
@@ -14,9 +18,17 @@ const server = http.createServer(app);
 var io = socketIO(server);
 var users = new Users();
 
+
+app.enable('trust proxy');
+
+app.use(cors());
+app.options('*', cors());
+
+app.use(helmet());
 app.use(express.static(publicPath));
 
-
+app.use(xss());
+app.use(compression());
 
 io.on("connection",(socket)=>{
 
