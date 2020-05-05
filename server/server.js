@@ -3,7 +3,7 @@ const express = require("express");
 const publicPath = path.join(__dirname,"../public");
 const socketIO = require("socket.io");
 const http = require("http");
-const PORT = process.env.PORT||3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 const {generate_message,generateLocation_message} = require("./utils/message");
 const {isRealString} =  require("./utils/validation")
@@ -82,7 +82,7 @@ io.on("connection",(socket)=>{
         console.log("User was disconnected")
     })
 })
-server.listen(3000,()=>{
+server.listen(PORT,()=>{
     console.log(`server is up on port ${PORT}`);
 })
 
