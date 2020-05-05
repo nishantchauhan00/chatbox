@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ChatBox</title>
+    <link rel="icon" href="img/logo.png" />
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+        <body class="chat">
+    
+                <div class="chat__sidebar">
+                    <h3>ChatBox&nbsp;<img src="img/logo.png" style="width: 20px;height: auto; margin-bottom: -2px;"></h3>
+                    <div id="users"></div>
+                </div>
+            
+                <div class="chat__main">
+                 <ol id="messages" class="chat__messages"> </ol>
+                <div class="chat__footer">
+                <form id="message_form">
+                    <input type="text" name="message" placeholder="Message" autocomplete="off" autofocus/>
+                    <button>Send</button>
+                </form>
+                <button id="send_location">Send Location</button>
+            </div>
+            </div>
+
+
+            <script  id="message_template" type="text/template">
+                <li class="message">
+                <div class="message__title">
+                        <h4>{{from}}</h4>
+                        <span>{{createdAt}}</span>
+                    </div>
+                    <div class="message__body">
+                        <p>{{text}}</p>
+                    </div>  
+                </li>
+            </script>
+
+
+            <script  id="location_message_template" type="text/template">
+                     <li class="message">
+                        <div class="message__title">
+                                <h4>{{from}}</h4>
+                                <span>{{createdAt}}</span>
+                            </div>
+                            <div class="message__body">
+                                <p>
+                                    <a href="{{url}}" target="_blank">My current loaction</a>
+                                </p>
+                            </div>  
+                        </li>
+                </script>
+    
+<script src="/socket.io/socket.io.js"></script>
+<!-- the path is relative to server -->
+<!-- by adding this path we are loading the library one of the method let client to initiate the request -->
+<script src="./js/libs/jquery-3.3.1.min.js"></script>
+<script src="./js/libs/moment.js"></script>
+<script src="./js/libs/mustache.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/libs/deparam.js"></script>
+
+</body>
+</html>  
